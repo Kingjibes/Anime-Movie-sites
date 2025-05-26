@@ -1,0 +1,150 @@
+@tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    @layer base {
+      :root {
+        --background: 210 40% 98%; /* Light mode background */
+        --foreground: 222.2 84% 4.9%; /* Light mode text */
+
+        --card: 210 40% 96%; /* Light mode card */
+        --card-foreground: 222.2 84% 4.9%;
+     
+        --popover: 210 40% 96%; /* Light mode popover */
+        --popover-foreground: 222.2 84% 4.9%;
+     
+        --primary: 263.4 70% 50.4%; /* Vibrant Purple - consistent */
+        --primary-foreground: 210 40% 98%; /* Text on primary */
+     
+        --secondary: 326.6 80% 58.8%; /* Bright Pink - consistent */
+        --secondary-foreground: 210 40% 98%; /* Text on secondary */
+     
+        --muted: 210 40% 90%; /* Light mode muted */
+        --muted-foreground: 215 20.2% 45.1%;
+     
+        --accent: 195.1 84.1% 50%; /* Electric Blue - consistent */
+        --accent-foreground: 210 40% 98%; /* Text on accent */
+     
+        --destructive: 0 72.2% 50.6%; /* Light mode destructive */
+        --destructive-foreground: 210 40% 98%;
+
+        --border: 210 40% 87.5%; /* Light mode border */
+        --input: 210 40% 92.5%; /* Light mode input */
+        --ring: 263.4 70% 50.4%; 
+
+        --radius: 0.75rem;
+      }
+
+      .dark {
+        --background: 222.2 84% 4.9%; /* Dark mode background */
+        --foreground: 210 40% 98%;   /* Dark mode text */
+
+        --card: 222.2 84% 6.9%;    /* Dark mode card */
+        --card-foreground: 210 40% 98%;
+     
+        --popover: 222.2 84% 6.9%; /* Dark mode popover */
+        --popover-foreground: 210 40% 98%;
+     
+        --primary: 263.4 70% 50.4%;
+        --primary-foreground: 210 40% 98%;
+     
+        --secondary: 326.6 80% 58.8%;
+        --secondary-foreground: 210 40% 98%;
+     
+        --muted: 217.2 32.6% 17.5%;
+        --muted-foreground: 215 20.2% 65.1%;
+     
+        --accent: 195.1 84.1% 50%;
+        --accent-foreground: 210 40% 98%;
+     
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 210 40% 98%;
+
+        --border: 217.2 32.6% 17.5%;
+        --input: 217.2 32.6% 17.5%;
+        --ring: 263.4 70% 50.4%;
+      }
+    }
+     
+    @layer base {
+      * {
+        @apply border-border transition-colors duration-300 ease-in-out;
+      }
+      body {
+        @apply bg-background text-foreground;
+        font-family: 'Poppins', sans-serif;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+      }
+      #root {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        @apply font-bold;
+      }
+      h1 { @apply text-4xl md:text-5xl; }
+      h2 { @apply text-3xl md:text-4xl; }
+      h3 { @apply text-2xl md:text-3xl; }
+
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: hsl(var(--muted)); 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: hsl(var(--primary)); 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: hsl(var(--primary) / 0.8);
+      }
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;700&display=swap');
+
+    .gradient-text {
+      @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+    }
+
+    .glassmorphism {
+      background: hsl(var(--card) / 0.5); /* Adjusted for theme */
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid hsl(var(--border) / 0.3); /* Adjusted for theme */
+    }
+
+    .light .glassmorphism {
+      background: rgba(255, 255, 255, 0.3); /* Specific for light mode if needed */
+      border: 1px solid rgba(200, 200, 200, 0.2);
+    }
+    
+    .dark .glassmorphism {
+       background: rgba(30, 30, 50, 0.3); /* Specific for dark mode if needed */
+       border: 1px solid rgba(50, 50, 80, 0.3);
+    }
+
+    /* Additional animation for page transitions */
+    .page-enter {
+      opacity: 0;
+      transform: scale(0.95) translateY(20px);
+    }
+    .page-enter-active {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      transition: opacity 300ms, transform 300ms;
+    }
+    .page-exit {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+    .page-exit-active {
+      opacity: 0;
+      transform: scale(0.95) translateY(-20px);
+      transition: opacity 300ms, transform 300ms;
+    }
+    
